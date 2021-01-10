@@ -15,7 +15,7 @@ function showHour() {
     var colorHour = parseInt($(this).attr("id").split("hour")[1]);
     console.log( colorHour, currentHour)
 
-    //check if we've moved past this time
+    //check time
     if (colorHour < currentHour) {
         $(this).addClass("past");
         $(this).removeClass("future");
@@ -34,3 +34,5 @@ function showHour() {
 })
 }
 showHour();
+//refresh page 
+setInterval('window.location.reload()', 60000);

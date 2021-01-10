@@ -36,3 +36,11 @@ function showHour() {
 showHour();
 //refresh page 
 setInterval('window.location.reload()', 60000);
+
+//loop for local storage
+var notes = Object.keys(localStorage);
+for (let j = 0; j < notes.length; j++) {
+    var getHour = localStorage.getItem(notes[j]);
+    var temp = $("#" + notes[j]).find("textarea")
+    temp.val(getHour);
+}

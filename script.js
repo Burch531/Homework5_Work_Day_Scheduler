@@ -41,6 +41,14 @@ setInterval('window.location.reload()', 60000);
 var notes = Object.keys(localStorage);
 for (let j = 0; j < notes.length; j++) {
     var getHour = localStorage.getItem(notes[j]);
-    var temp = $("#" + notes[j]).find("textarea")
-    temp.val(getHour);
+    var input = $("#" + notes[j]).find("textarea")
+    input.val(getHour);
 }
+$(".saveBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log(this);
+    var getHour = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+
+    localStorage.setItem(time, getHour);
+});

@@ -7,32 +7,32 @@ $(document).ready(function () {
 // Change color based on time
 
 function showHour() {
- //get current hour
- var currentHour = moment().hour();
+    //get current hour
+    var currentHour = moment().hour();
 
- // loop for time blocks 
- $(".time-block").each(function () {
-    var colorHour = parseInt($(this).attr("id").split("hour")[1]);
-    console.log( colorHour, currentHour)
+    // loop for time blocks 
+    $(".time-block").each(function () {
+        var colorHour = parseInt($(this).attr("id").split("hour")[1]);
+        console.log(colorHour, currentHour)
 
-    //check time
-    if (colorHour < currentHour) {
-        $(this).addClass("past");
-        $(this).removeClass("future");
-        $(this).removeClass("present");
-    }
-    else if (colorHour == currentHour) {
-        $(this).removeClass("past");
-        $(this).addClass("present");
-        $(this).removeClass("future");
-    }
-    else {
-        $(this).removeClass("present");
-        $(this).removeClass("past");
-        $(this).addClass("future");
-    }
-})
-}
+        //check time
+        if (colorHour < currentHour) {
+            $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+        }
+        else if (colorHour === currentHour) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
+            $(this).removeClass("future");
+        }
+        else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+        }
+    })
+};
 showHour();
 //refresh page 
 setInterval('window.location.reload()', 60000);
@@ -44,6 +44,7 @@ for (let j = 0; j < notes.length; j++) {
     var input = $("#" + notes[j]).find("textarea")
     input.val(getHour);
 }
+//function event click button with local storage
 $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     console.log(this);

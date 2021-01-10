@@ -1,15 +1,36 @@
 $(document).ready(function () {
-    //display current day & time.
+    //display current day & time
     $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
 });
 
-// Change color of inputs based on current time
+// Change color based on time
 
 function showHour() {
- //get current number of hours.
+ //get current hour
  var currentHour = moment().hour();
 
- // loop over time blocks 
+ // loop for time blocks 
+ $(".time-block").each(function () {
+    var colorHour = parseInt($(this).attr("id").split("hour")[1]);
+    console.log( colorHour, currentHour)
 
+    //check if we've moved past this time
+    if (colorHour < currentHour) {
+        $(this).addClass("past");
+        $(this).removeClass("future");
+        $(this).removeClass("present");
+    }
+    else if (colorHour == currentHour) {
+        $(this).removeClass("past");
+        $(this).addClass("present");
+        $(this).removeClass("future");
+    }
+    else {
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+        $(this).addClass("future");
+    }
+})
 }
+showHour();

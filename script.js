@@ -7,4 +7,9 @@ $(document).ready(function () {
 // Change color of inputs based on current time
 
 function showHour() {
+ //get current number of hours.
+ var currentHour = moment().hour();
 
+ // loop over time blocks 
+
+}
